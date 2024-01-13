@@ -5,7 +5,6 @@ name: CI Dev Preview Deploy Frontend
 "on": pull_request
 jobs:
   dev_build_and_preview:
-    if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"
     env:
       GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
       GCLOUD_SERVICE_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROOF_OF_YOUR_LIFE_DEV }}

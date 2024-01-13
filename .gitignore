@@ -43,3 +43,5 @@ Thumbs.db
 
 # Firebase
 *.log
+service-account-key.*.json
+service-account-key.*.txt
