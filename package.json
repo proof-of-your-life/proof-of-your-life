@@ -8,7 +8,16 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "format": "prettier --write projects/"
+    "format": "prettier --write projects/",
+    "build:admin": "ng build admin",
+    "watch:admin": "ng build admin --watch --configuration development",
+    "build:common": "ng build common && rm -rf functions/src/common/src && cp -r projects/common/src functions/src/common/src",
+    "build:lp": "ng build lp",
+    "watch:lp": "ng build lp --watch --configuration development",
+    "build:shared": "ng build shared",
+    "watch:shared": "ng build shared --watch --configuration development",
+    "build:web": "ng build web",
+    "watch:web": "ng build web --watch --configuration development"
   },
   "private": true,
   "dependencies": {

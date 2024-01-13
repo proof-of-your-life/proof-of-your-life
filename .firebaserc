@@ -1,0 +1,64 @@
+{
+  "projects": {
+    "default": "proof-of-your-life-dev",
+    "dev": "proof-of-your-life-dev",
+    "test": "proof-of-your-life-test",
+    "stg": "proof-of-your-life-stg",
+    "prod": "proof-of-your-life"
+  },
+  "targets": {
+    "proof-of-your-life-dev": {
+      "hosting": {
+        "admin": [
+          "proof-of-your-life-dev-admin"
+        ],
+        "lp": [
+          "proof-of-your-life-dev"
+        ],
+        "web": [
+          "proof-of-your-life-dev-web"
+        ]
+      }
+    },
+    "proof-of-your-life-test": {
+      "hosting": {
+        "admin": [
+          "proof-of-your-life-test-admin"
+        ],
+        "lp": [
+          "proof-of-your-life-test"
+        ],
+        "web": [
+          "proof-of-your-life-test-web"
+        ]
+      }
+    },
+    "proof-of-your-life-stg": {
+      "hosting": {
+        "admin": [
+          "proof-of-your-life-stg-admin"
+        ],
+        "lp": [
+          "proof-of-your-life-stg"
+        ],
+        "web": [
+          "proof-of-your-life-stg-web"
+        ]
+      }
+    },
+    "proof-of-your-life": {
+      "hosting": {
+        "admin": [
+          "proof-of-your-life-admin"
+        ],
+        "lp": [
+          "proof-of-your-life"
+        ],
+        "web": [
+          "proof-of-your-life-web"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
