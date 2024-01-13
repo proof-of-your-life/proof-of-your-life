@@ -5,7 +5,7 @@ name: CI Dev Preview Deploy Frontend
 "on": pull_request
 permissions:
   actions: none
-  checks: none
+  checks: read
   contents: none
   deployments: none
   id-token: none
