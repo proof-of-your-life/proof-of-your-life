@@ -8,4 +8,5 @@ typings/
 # Node.js dependency directory
 node_modules/
 
-src/common/*
+!src/common/.gitkeep
+src/common/**/
