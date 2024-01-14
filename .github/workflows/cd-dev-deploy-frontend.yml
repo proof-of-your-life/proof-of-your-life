@@ -21,7 +21,7 @@ permissions:
   security-events: none
   statuses: none
 jobs:
-  build_and_deploy:
+  cd_dev_deploy_frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
