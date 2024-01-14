@@ -20,11 +20,11 @@
     "watch:web": "ng build web --watch --configuration development",
     "encode-service-account-key:dev": "cat service-account-key.dev.json | base64 > service-account-key.dev.encoded.txt",
     "encode-service-account-key:test": "cat service-account-key.test.json | base64 > service-account-key.test.encoded.txt",
-    "encode-service-account-key:stage": "cat service-account-key.stage.json | base64 > service-account-key.stage.encoded.txt",
+    "encode-service-account-key:stg": "cat service-account-key.stg.json | base64 > service-account-key.stg.encoded.txt",
     "encode-service-account-key:prod": "cat service-account-key.prod.json | base64 > service-account-key.prod.encoded.txt",
     "decode-service-account-key:dev": "cat service-account-key.dev.encoded.txt | base64 -d > service-account-key.dev.decoded.txt",
     "decode-service-account-key:test": "cat service-account-key.test.encoded.txt | base64 -d > service-account-key.test.decoded.txt",
-    "decode-service-account-key:stage": "cat service-account-key.stage.encoded.txt | base64 -d > service-account-key.stage.decoded.txt",
+    "decode-service-account-key:stg": "cat service-account-key.stg.encoded.txt | base64 -d > service-account-key.stg.decoded.txt",
     "decode-service-account-key:prod": "cat service-account-key.prod.encoded.txt | base64 -d > service-account-key.prod.decoded.txt"
   },
   "private": true,
