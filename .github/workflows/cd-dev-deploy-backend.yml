@@ -22,9 +22,11 @@ permissions:
   statuses: none
 jobs:
   cd_dev_deploy_backend:
+    environment:
+      name: dev
     env:
       GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-      GCLOUD_SERVICE_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROOF_OF_YOUR_LIFE_DEV }}
+      GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

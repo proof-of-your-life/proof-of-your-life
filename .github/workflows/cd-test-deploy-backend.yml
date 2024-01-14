@@ -3,9 +3,7 @@
 
 name: CD Test Deploy Backend
 "on":
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 permissions:
   actions: none
   checks: write
@@ -22,9 +20,11 @@ permissions:
   statuses: none
 jobs:
   cd_test_deploy_backend:
+    environment:
+      name: test
     env:
       GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-      GCLOUD_SERVICE_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROOF_OF_YOUR_LIFE_TEST }}
+      GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
