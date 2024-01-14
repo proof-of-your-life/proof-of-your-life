@@ -3,9 +3,7 @@
 
 name: CD Stg Deploy Backend
 "on":
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 permissions:
   actions: none
   checks: write
@@ -22,9 +20,11 @@ permissions:
   statuses: none
 jobs:
   cd_stg_deploy_backend:
+    environment:
+      name: stg
     env:
       GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-      GCLOUD_SERVICE_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROOF_OF_YOUR_LIFE_STG }}
+      GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
