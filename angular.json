@@ -56,7 +56,7 @@
               "fileReplacements": [
                 {
                   "replace": "projects/admin/src/environments/environment.ts",
-                  "with": "projects/admin/src/environments/environment.development.ts"
+                  "with": "projects/admin/src/environments/environment.dev.ts"
                 }
               ]
             }
@@ -152,7 +152,7 @@
               "fileReplacements": [
                 {
                   "replace": "projects/lp/src/environments/environment.ts",
-                  "with": "projects/lp/src/environments/environment.development.ts"
+                  "with": "projects/lp/src/environments/environment.dev.ts"
                 }
               ]
             }
@@ -338,7 +338,7 @@
               "fileReplacements": [
                 {
                   "replace": "projects/web/src/environments/environment.ts",
-                  "with": "projects/web/src/environments/environment.development.ts"
+                  "with": "projects/web/src/environments/environment.dev.ts"
                 }
               ]
             }
