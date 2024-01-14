@@ -4,6 +4,20 @@
 name: CD Test Deploy Frontend
 "on":
   workflow_dispatch:
+permissions:
+  actions: none
+  checks: write
+  contents: none
+  deployments: none
+  id-token: none
+  issues: none
+  discussions: none
+  packages: none
+  pages: none
+  pull-requests: write
+  repository-projects: none
+  security-events: none
+  statuses: none
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
