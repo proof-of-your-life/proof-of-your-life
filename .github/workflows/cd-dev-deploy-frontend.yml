@@ -6,6 +6,7 @@ name: CD Dev Deploy Frontend
   push:
     branches:
       - main
+  workflow_dispatch:
 permissions:
   actions: none
   checks: write
