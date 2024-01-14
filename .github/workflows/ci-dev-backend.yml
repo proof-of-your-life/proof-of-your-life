@@ -4,7 +4,7 @@
 name: CI Dev Backend
 "on": pull_request
 jobs:
-  build_and_preview:
+  ci_dev_backend:
     if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"
     runs-on: ubuntu-latest
     steps:
