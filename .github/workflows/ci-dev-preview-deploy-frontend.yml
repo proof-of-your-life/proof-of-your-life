@@ -18,7 +18,8 @@ permissions:
   security-events: none
   statuses: none
 jobs:
-  dev_build_and_preview:
+  ci_dev_preview_deploy_frontend:
+    if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
