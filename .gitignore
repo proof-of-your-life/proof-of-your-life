@@ -45,3 +45,22 @@ Thumbs.db
 *.log
 service-account-key.*.json
 service-account-key.*.txt
+
+# Environment Variables
+environment.ts
+environment.prod.ts
+environment.stg.ts
+environment.test.ts
+environment.dev.ts
+
+encoded.environment.ts
+encoded.environment.prod.ts
+encoded.environment.stg.ts
+encoded.environment.test.ts
+encoded.environment.dev.ts
+
+decoded.environment.ts
+decoded.environment.prod.ts
+decoded.environment.stg.ts
+decoded.environment.test.ts
+decoded.environment.dev.ts
