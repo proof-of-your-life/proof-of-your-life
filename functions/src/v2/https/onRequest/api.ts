@@ -47,7 +47,7 @@ app.get('/v1/hello', apiHandlers.v1.hello.get);
 export const api = functionsV2.https.onRequest(
   {
     region: 'asia-northeast1',
-    timeoutSeconds: 3600,
+    timeoutSeconds: 540,
     memory: '128MiB',
     cors: true,
   },

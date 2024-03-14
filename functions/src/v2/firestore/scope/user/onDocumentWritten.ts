@@ -15,7 +15,7 @@ import { onDocumentDeletedHandler } from './onDocumentDeletedHandler';
 setFunctionsV2DefaultGlobalOption(
   {
     region: 'asia-northeast1',
-    timeoutSeconds: 120,
+    timeoutSeconds: 60,
     memory: '128MiB',
   },
   functionsV2,

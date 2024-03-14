@@ -22,45 +22,6 @@
   "hosting": [
     {
       "target": "admin",
-      "rewrites": [
-        {
-          "source": "/api/**",
-          "functions": {
-            "functionId": "v2-https-onRequest-api",
-            "region": "asia-northeast1",
-            "pinTag": true
-          }
-        }
-      ]
-    },
-    {
-      "target": "lp",
-      "rewrites": [
-        {
-          "source": "/api/**",
-          "functions": {
-            "functionId": "v2-https-onRequest-api",
-            "region": "asia-northeast1",
-            "pinTag": true
-          }
-        }
-      ]
-    },
-    {
-      "target": "web",
-      "rewrites": [
-        {
-          "source": "/api/**",
-          "functions": {
-            "functionId": "v2-https-onRequest-api",
-            "region": "asia-northeast1",
-            "pinTag": true
-          }
-        }
-      ]
-    },
-    {
-      "target": "admin",
       "public": "dist/admin/browser",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [

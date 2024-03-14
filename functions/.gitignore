@@ -29,3 +29,5 @@ src/common/**/
 .env.test.decoded.txt
 .env.stg.decoded.txt
 .env.prod.decoded.txt
+
+data

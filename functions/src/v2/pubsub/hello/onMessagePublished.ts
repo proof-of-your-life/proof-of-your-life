@@ -9,7 +9,7 @@ import {
 setFunctionsV2DefaultGlobalOption(
   {
     region: 'asia-northeast1',
-    timeoutSeconds: 3600,
+    timeoutSeconds: 540,
     memory: '128MiB',
   },
   functionsV2,

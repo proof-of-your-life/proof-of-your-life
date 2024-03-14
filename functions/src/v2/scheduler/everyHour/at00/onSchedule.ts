@@ -13,8 +13,8 @@ import { getRandomReferenceNodes } from '@v2/firestore/scope/blockchain/node/nod
 setFunctionsV2DefaultGlobalOption(
   {
     region: 'asia-northeast1',
-    timeoutSeconds: 3600,
-    memory: '128MiB',
+    timeoutSeconds: 540,
+    memory: '256MiB',
   },
   functionsV2,
 );

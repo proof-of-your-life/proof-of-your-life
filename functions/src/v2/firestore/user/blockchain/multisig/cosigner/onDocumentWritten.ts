@@ -22,7 +22,7 @@ setFunctionsV2DefaultGlobalOption(
     secrets: [PAYER_PRIVATE_KEY, DATA_PRIVATE_KEY],
     region: 'asia-northeast1',
     timeoutSeconds: 120,
-    memory: '128MiB',
+    memory: '256MiB',
   },
   functionsV2,
 );

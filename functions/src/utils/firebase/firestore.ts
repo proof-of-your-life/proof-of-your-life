@@ -1,10 +1,10 @@
 import { ulid } from 'ulid';
-import { Timestamp } from 'firebase/firestore';
+import { Timestamp } from 'firebase-admin/firestore';
 import {
   QueryDocumentSnapshot,
   DocumentSnapshot,
 } from 'firebase-functions/v2/firestore';
-export { Timestamp } from 'firebase/firestore';
+export { Timestamp } from 'firebase-admin/firestore';
 
 const isTimestamp = (mayBeTimestamp: unknown): mayBeTimestamp is Timestamp => {
   return mayBeTimestamp instanceof Timestamp;

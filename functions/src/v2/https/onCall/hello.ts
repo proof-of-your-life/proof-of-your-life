@@ -5,7 +5,7 @@ export const hello = functionsV2.https.onCall<{ name: string }>(
     region: 'asia-northeast1',
     cors: true,
     memory: '128MiB',
-    timeoutSeconds: 3600,
+    timeoutSeconds: 540,
   },
   async (
     request: CallableRequest<{ name: string }>,
