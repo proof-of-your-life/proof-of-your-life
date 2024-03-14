@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "http://127.0.0.1:5001",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": "/proof-of-your-life-dev/asia-northeast1/v2-https-onRequest-api"
+    },
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

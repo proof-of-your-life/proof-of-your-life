@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'admin-root',
+  selector: 'shared-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   template: `

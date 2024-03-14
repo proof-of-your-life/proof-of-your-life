@@ -64,3 +64,5 @@ decoded.environment.prod.ts
 decoded.environment.stg.ts
 decoded.environment.test.ts
 decoded.environment.dev.ts
+
+/data

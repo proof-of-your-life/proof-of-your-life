@@ -8,6 +8,10 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
+      "@admin/*": ["./projects/admin/src/*"],
+      "@lp/*": ["./projects/lp/src/*"],
+      "@web/*": ["./projects/web/src/*"],
+      "@shared/*": ["./projects/shared/src/*"],
       "common": ["./dist/common"]
     },
     "noImplicitReturns": true,

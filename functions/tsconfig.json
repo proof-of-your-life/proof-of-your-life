@@ -6,12 +6,16 @@
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017",
+    "target": "es2021",
     "baseUrl": ".",
     "paths": {
+      "@utils/*": ["./src/utils/*"],
       "@common/*": ["./src/common/*"],
-      "@functions/*": ["./src"]
-    }
+      "@f/*": ["./src"],
+      "@v1/*": ["./src/v1/*"],
+      "@v2/*": ["./src/v2/*"]
+    },
+    "esModuleInterop": true
   },
   "compileOnSave": true,
   "include": ["src"]

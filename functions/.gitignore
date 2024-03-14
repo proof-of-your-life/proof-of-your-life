@@ -10,3 +10,22 @@ node_modules/
 
 !src/common/.gitkeep
 src/common/**/
+
+.secret.local
+
+.env
+
+.env.dev
+.env.test
+.env.stg
+.env.prod
+
+.env.dev.encoded.txt
+.env.test.encoded.txt
+.env.stg.encoded.txt
+.env.prod.encoded.txt
+
+.env.dev.decoded.txt
+.env.test.decoded.txt
+.env.stg.decoded.txt
+.env.prod.decoded.txt
