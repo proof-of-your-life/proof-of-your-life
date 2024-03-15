@@ -14,11 +14,17 @@ src/common/**/
 .secret.local
 
 .env
+.env.local
 
 .env.dev
 .env.test
 .env.stg
 .env.prod
+
+.env.dev.local
+.env.test.local
+.env.stg.local
+.env.prod.local
 
 .env.dev.encoded.txt
 .env.test.encoded.txt
