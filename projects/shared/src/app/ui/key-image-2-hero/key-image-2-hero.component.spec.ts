@@ -8,10 +8,9 @@ describe('KeyImage2HeroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [KeyImage2HeroComponent]
-    })
-    .compileComponents();
-    
+      imports: [KeyImage2HeroComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(KeyImage2HeroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
