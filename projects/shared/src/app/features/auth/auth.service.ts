@@ -30,6 +30,8 @@ export class AuthService {
 
   async signInWithGoogle() {
     const provider = new GoogleAuthProvider();
+    provider.addScope('https://www.googleapis.com/auth/userinfo.email');
+    provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
     return await signInWithPopup(this.auth, provider);
   }
 
@@ -49,6 +51,8 @@ export class AuthService {
 
   async linkWithGoogle() {
     const provider = new GoogleAuthProvider();
+    provider.addScope('https://www.googleapis.com/auth/userinfo.email');
+    provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
     const authUser = this.$authUser();
     if (authUser) {
       return await linkWithPopup(authUser, provider);
