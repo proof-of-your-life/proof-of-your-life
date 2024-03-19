@@ -25,6 +25,10 @@ jobs:
     env:
       GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
       GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
+      LP_ENVIRONMENT: ${{ secrets.LP_ENVIRONMENT }}
+      ADMIN_ENVIRONMENT: ${{ secrets.ADMIN_ENVIRONMENT }}
+      WEB_ENVIRONMENT: ${{ secrets.WEB_ENVIRONMENT }}
+      FUNCTIONS_ENVIRONMENT: ${{ secrets.FUNCTIONS_ENVIRONMENT }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -40,8 +44,14 @@ jobs:
       - run: npm run format
       - run: npm run build:common
       - run: npm run build:shared
+      - run: touch ./projects/lp/src/environments/environment.ts
+      - run: echo $LP_ENVIRONMENT | base64 -d --ignore-garbage > ./projects/lp/src/environments/environment.ts
       - run: npm run build:lp
+      - run: touch ./projects/admin/src/environments/environment.ts
+      - run: echo $ADMIN_ENVIRONMENT | base64 -d --ignore-garbage > ./projects/admin/src/environments/environment.ts
       - run: npm run build:admin
+      - run: touch ./projects/web/src/environments/environment.ts
+      - run: echo $WEB_ENVIRONMENT | base64 -d --ignore-garbage > ./projects/web/src/environments/environment.ts
       - run: npm run build:web
       - run: npm ci
         working-directory: functions
@@ -49,6 +59,8 @@ jobs:
         working-directory: functions
       - run: npm run format
         working-directory: functions
+      - run: touch ./functions/.env
+      - run: echo $FUNCTIONS_ENVIRONMENT | base64 -d --ignore-garbage > ./functions/.env
       - run: npm run build
         working-directory: functions
       - run: touch $GOOGLE_APPLICATION_CREDENTIALS
@@ -56,4 +68,12 @@ jobs:
       - run: npx firebase use dev
       - run: npx firebase deploy
       - run: rm $GOOGLE_APPLICATION_CREDENTIALS
+        if: ${{ always() }}
+      - run: rm ./projects/lp/src/environments/environment.ts
+        if: ${{ always() }}
+      - run: rm ./projects/admin/src/environments/environment.ts
+        if: ${{ always() }}
+      - run: rm ./projects/web/src/environments/environment.ts
+        if: ${{ always() }}
+      - run: rm ./functions/.env
         if: ${{ always() }}

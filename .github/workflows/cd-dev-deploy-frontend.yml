@@ -23,6 +23,12 @@ permissions:
   statuses: none
 jobs:
   cd_dev_deploy_frontend:
+    environment:
+      name: dev
+    env:
+      LP_ENVIRONMENT: ${{ secrets.LP_ENVIRONMENT }}
+      ADMIN_ENVIRONMENT: ${{ secrets.ADMIN_ENVIRONMENT }}
+      WEB_ENVIRONMENT: ${{ secrets.WEB_ENVIRONMENT }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,6 +40,8 @@ jobs:
       - run: npm ci
       - run: npm run build:common
       - run: npm run build:shared
+      - run: touch ./projects/lp/src/environments/environment.ts
+      - run: echo $LP_ENVIRONMENT | base64 -d --ignore-garbage > ./projects/lp/src/environments/environment.ts
       - run: npm run build:lp
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -42,6 +50,8 @@ jobs:
           channelId: live
           projectId: proof-of-your-life-dev
           target: lp
+      - run: touch ./projects/admin/src/environments/environment.ts
+      - run: echo $ADMIN_ENVIRONMENT | base64 -d --ignore-garbage > ./projects/admin/src/environments/environment.ts
       - run: npm run build:admin
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -50,6 +60,8 @@ jobs:
           channelId: live
           projectId: proof-of-your-life-dev
           target: admin
+      - run: touch ./projects/web/src/environments/environment.ts
+      - run: echo $WEB_ENVIRONMENT | base64 -d --ignore-garbage > ./projects/web/src/environments/environment.ts
       - run: npm run build:web
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -58,3 +70,9 @@ jobs:
           channelId: live
           projectId: proof-of-your-life-dev
           target: web
+      - run: rm ./projects/lp/src/environments/environment.ts
+        if: ${{ always() }}
+      - run: rm ./projects/admin/src/environments/environment.ts
+        if: ${{ always() }}
+      - run: rm ./projects/web/src/environments/environment.ts
+        if: ${{ always() }}
