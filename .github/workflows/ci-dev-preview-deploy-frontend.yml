@@ -33,6 +33,10 @@ jobs:
       - run: npm run format
       - run: npm run build:common
       - run: npm run build:shared
+      - run: touch ./projects/lp/src/environments/environment.ts
+      - run: echo $LP_ENVIRONMENT | base64 -d --ignore-garbage > ./projects/lp/src/environments/environment.ts
+        env:
+          LP_ENVIRONMENT: ${{ secrets.LP_ENVIRONMENT }}
       - run: npm run build:lp
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -40,6 +44,10 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROOF_OF_YOUR_LIFE_DEV }}"
           projectId: proof-of-your-life-dev
           target: lp
+      - run: touch ./projects/admin/src/environments/environment.ts
+      - run: echo $ADMIN_ENVIRONMENT | base64 -d --ignore-garbage > ./projects/admin/src/environments/environment.ts
+        env:
+          ADMIN_ENVIRONMENT: ${{ secrets.ADMIN_ENVIRONMENT }}
       - run: npm run build:admin
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -47,6 +55,10 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROOF_OF_YOUR_LIFE_DEV }}"
           projectId: proof-of-your-life-dev
           target: admin
+      - run: touch ./projects/web/src/environments/environment.ts
+      - run: echo $WEB_ENVIRONMENT | base64 -d --ignore-garbage > ./projects/web/src/environments/environment.ts
+        env:
+          WEB_ENVIRONMENT: ${{ secrets.WEB_ENVIRONMENT }}
       - run: npm run build:web
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
