@@ -28,7 +28,7 @@ import { SizeProp } from '@fortawesome/fontawesome-svg-core';
             <shared-fa-github-icon [$size]="$size" />
           </a>
           <a
-            href="https://web.dev.proof-of-your-life.io/"
+            href="https://proof-of-your-life.io/"
             target="_blank"
             rel="noopener noreferrer"
           >
