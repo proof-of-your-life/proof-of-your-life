@@ -60,7 +60,7 @@ import { FaHomeIconComponent } from '@shared/app/ui/icon/fontawesome/fa-home-ico
                     rel="noopener noreferrer"
                   >
                     <shared-fa-mail-bulk-icon [$size]="$size" />
-                    <span>contact&#64;proof-of-your-life.io</span>
+                    <span class="ml-3">contact&#64;proof-of-your-life.io</span>
                   </a>
                 </td>
               </tr>
