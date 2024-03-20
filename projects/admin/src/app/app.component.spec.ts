@@ -1,29 +1,40 @@
-import { TestBed } from '@angular/core/testing';
+import { RenderResult, render, screen } from '@testing-library/angular';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
-  });
+  let renderResult: RenderResult<AppComponent>;
+  let appComponent: AppComponent;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  describe('Initial state', () => {
+    beforeEach(async () => {
+      renderResult = await render(AppComponent);
+      appComponent = renderResult.fixture.componentInstance;
+    });
 
-  it(`should have the 'admin' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('admin');
-  });
+    it('should create the app', async () => {
+      expect(appComponent).toBeTruthy();
+    });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, admin');
+    it(`should have the 'admin' title`, async () => {
+      expect(appComponent.title).toEqual('admin');
+    });
+
+    it('should render title', async () => {
+      expect(screen.getByText('Welcome to admin!')).toBeDefined();
+    });
+
+    it('should render environment', async () => {
+      expect(screen.getByText('Environment: dev')).toBeDefined();
+    });
+
+    it('should render useEmulator', async () => {
+      expect(screen.getByText('useEmulator: true')).toBeDefined();
+    });
+
+    it('should render Blockchain Symbol Network', async () => {
+      expect(
+        screen.getByText('Blockchain Symbol Network: testnet'),
+      ).toBeDefined();
+    });
   });
 });

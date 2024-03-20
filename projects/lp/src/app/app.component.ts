@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { environment } from '@lp/environments/environment';
 
 @Component({
-  selector: 'admin-root',
+  selector: 'lp-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet],
-  template: `
-    <h1>Welcome to {{ title }}!</h1>
-
-    <router-outlet></router-outlet>
-  `,
+  template: ` <router-outlet></router-outlet> `,
   styles: [],
 })
 export class AppComponent {
   title = 'lp';
+  environment = environment;
 }

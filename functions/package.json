@@ -9,16 +9,28 @@
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "encode-env:dev": "cat .env.dev | base64 > .env.dev.encoded.txt",
+    "encode-env:test": "cat .env.test | base64 > .env.test.encoded.txt",
+    "encode-env:stg": "cat .env.stg | base64 > .env.stg.encoded.txt",
+    "encode-env:prod": "cat .env.prod | base64 > .env.prod.encoded.txt",
+    "decode-env:dev": "cat .env.dev.encoded.txt | base64 -d > .env.dev.decoded.txt",
+    "decode-env:test": "cat .env.test.encoded.txt | base64 -d > .env.test.decoded.txt",
+    "decode-env:stg": "cat .env.stg.encoded.txt | base64 -d > .env.stg.decoded.txt",
+    "decode-env:prod": "cat .env.prod.encoded.txt | base64 -d > .env.prod.decoded.txt"
   },
   "engines": {
     "node": "18"
   },
   "main": "lib/index.js",
   "dependencies": {
+    "express": "^4.18.2",
     "firebase-admin": "^11.8.0",
     "firebase-functions": "^4.3.1",
-    "module-alias": "^2.2.3"
+    "module-alias": "^2.2.3",
+    "rxjs": "^7.8.1",
+    "symbol-sdk": "^2.0.4",
+    "ulid": "^2.3.0"
   },
   "devDependencies": {
     "@types/module-alias": "^2.0.4",

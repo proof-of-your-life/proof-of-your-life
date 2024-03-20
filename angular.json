@@ -52,7 +52,35 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/admin/src/environments/environment.ts",
+                  "with": "projects/admin/src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "test": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/admin/src/environments/environment.ts",
+                  "with": "projects/admin/src/environments/environment.test.ts"
+                }
+              ]
+            },
+            "staging": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/admin/src/environments/environment.ts",
+                  "with": "projects/admin/src/environments/environment.stg.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -64,7 +92,15 @@
               "buildTarget": "admin:build:production"
             },
             "development": {
-              "buildTarget": "admin:build:development"
+              "buildTarget": "admin:build:development",
+              "port": 4200,
+              "proxyConfig": "projects/admin/src/proxy.conf.json"
+            },
+            "test": {
+              "buildTarget": "admin:build:test"
+            },
+            "staging": {
+              "buildTarget": "admin:build:staging"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +121,13 @@
               "projects/admin/src/assets"
             ],
             "styles": ["projects/admin/src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "fileReplacements": [
+              {
+                "replace": "projects/admin/src/environments/environment.ts",
+                "with": "projects/admin/src/environments/environment.dev.ts"
+              }
+            ]
           }
         },
         "lint": {
@@ -109,7 +151,7 @@
       },
       "root": "projects/lp",
       "sourceRoot": "projects/lp/src",
-      "prefix": "admin",
+      "prefix": "lp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -142,7 +184,35 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/lp/src/environments/environment.ts",
+                  "with": "projects/lp/src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "test": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/lp/src/environments/environment.ts",
+                  "with": "projects/lp/src/environments/environment.test.ts"
+                }
+              ]
+            },
+            "staging": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/lp/src/environments/environment.ts",
+                  "with": "projects/lp/src/environments/environment.stg.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -154,7 +224,15 @@
               "buildTarget": "lp:build:production"
             },
             "development": {
-              "buildTarget": "lp:build:development"
+              "buildTarget": "lp:build:development",
+              "port": 4202,
+              "proxyConfig": "projects/lp/src/proxy.conf.json"
+            },
+            "test": {
+              "buildTarget": "lp:build:test"
+            },
+            "staging": {
+              "buildTarget": "lp:build:staging"
             }
           },
           "defaultConfiguration": "development"
@@ -172,7 +250,13 @@
             "tsConfig": "projects/lp/tsconfig.spec.json",
             "assets": ["projects/lp/src/favicon.ico", "projects/lp/src/assets"],
             "styles": ["projects/lp/src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "fileReplacements": [
+              {
+                "replace": "projects/lp/src/environments/environment.ts",
+                "with": "projects/lp/src/environments/environment.dev.ts"
+              }
+            ]
           }
         },
         "lint": {
@@ -193,7 +277,7 @@
       },
       "root": "projects/shared",
       "sourceRoot": "projects/shared/src",
-      "prefix": "admin",
+      "prefix": "shared",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -286,7 +370,7 @@
       },
       "root": "projects/web",
       "sourceRoot": "projects/web/src",
-      "prefix": "admin",
+      "prefix": "web",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -322,7 +406,35 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/web/src/environments/environment.ts",
+                  "with": "projects/web/src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "test": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/web/src/environments/environment.ts",
+                  "with": "projects/web/src/environments/environment.test.ts"
+                }
+              ]
+            },
+            "staging": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/web/src/environments/environment.ts",
+                  "with": "projects/web/src/environments/environment.stg.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -334,7 +446,15 @@
               "buildTarget": "web:build:production"
             },
             "development": {
-              "buildTarget": "web:build:development"
+              "buildTarget": "web:build:development",
+              "port": 4201,
+              "proxyConfig": "projects/web/src/proxy.conf.json"
+            },
+            "test": {
+              "buildTarget": "web:build:test"
+            },
+            "staging": {
+              "buildTarget": "web:build:staging"
             }
           },
           "defaultConfiguration": "development"

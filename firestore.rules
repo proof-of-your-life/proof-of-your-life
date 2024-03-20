@@ -5,5 +5,45 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false;
     }
+
+    match /scopes/public/{path=**} {
+      allow get: if true;
+      allow list: if true;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    match /users/{userId} {
+      allow get: if request.auth != null && request.auth.uid == userId;
+      allow list: if request.auth != null && request.auth.uid == userId;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    match /users/{userId}/accounts/{accountId} {
+      allow get: if request.auth != null && request.auth.uid == userId;
+      allow list: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null && request.auth.uid == userId && request.resource.data.id == accountId && request.resource.data.userId == userId;
+      allow update: if request.auth != null && request.auth.uid == userId && request.resource.data.id == accountId && request.resource.data.userId == userId;
+      allow delete: if request.auth != null && request.auth.uid == userId && request.resource.data.id == accountId && request.resource.data.userId == userId;
+    }
+
+    match /users/{userId}/blockchains/{blockchainId}/multisigs/{multisigId} {
+      allow get: if request.auth != null && request.auth.uid == userId;
+      allow list: if request.auth != null && request.auth.uid == userId;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    match /users/{userId}/blockchains/{blockchainId}/multisigs/{multisigId}/cosigners/{cosignerId} {
+      allow get: if request.auth != null && request.auth.uid == userId;
+      allow list: if request.auth != null && request.auth.uid == userId;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
   }
 }

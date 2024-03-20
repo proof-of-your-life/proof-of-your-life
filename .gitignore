@@ -41,7 +41,18 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Firebase
+# Firebase CLI Logs
 *.log
+
 service-account-key.*.json
 service-account-key.*.txt
+
+# Environment Variables
+environment.*
+!environment.sample.ts
+
+# Firebase Emulator's Local Data
+/data
+
+# Firebase deploy cache directory
+/.firebase
