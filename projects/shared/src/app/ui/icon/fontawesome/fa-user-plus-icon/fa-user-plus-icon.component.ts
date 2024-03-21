@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  Input,
-  Signal,
-  WritableSignal,
-  signal,
-} from '@angular/core';
+import { Component, input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconDefinition, SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
@@ -17,8 +11,8 @@ import { BaseFaIconComponent } from '@shared/app/ui/icon/fontawesome/base-fa-ico
   template: `
     <div class="text-center justify-center">
       <shared-base-fa-icon
-        [$iconDefinition]="$iconDefinition"
-        [$size]="$size"
+        [$iconDefinition]="$iconDefinition()"
+        [$size]="$size()"
       />
     </div>
   `,
@@ -26,7 +20,6 @@ import { BaseFaIconComponent } from '@shared/app/ui/icon/fontawesome/base-fa-ico
   imports: [CommonModule, FontAwesomeModule, BaseFaIconComponent],
 })
 export class FaUserPlusIconComponent {
-  $iconDefinition: WritableSignal<IconDefinition> | Signal<IconDefinition> =
-    signal(faUserPlus);
-  @Input() $size: WritableSignal<SizeProp> | Signal<SizeProp> = signal('3x');
+  $iconDefinition = input<IconDefinition>(faUserPlus);
+  $size = input<SizeProp>('3x');
 }

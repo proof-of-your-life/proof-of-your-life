@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { AuthService } from '@shared/app/features/auth/auth.service';
 import { KeyImage1HeroComponent } from '@shared/app/ui/key-image-1-hero/key-image-1-hero.component';
 import { KeyImage2HeroComponent } from '@shared/app/ui/key-image-2-hero/key-image-2-hero.component';
@@ -44,12 +44,5 @@ import { AuthSignInComponent } from '@web/app/pages/auth-sign-in/auth-sign-in.co
 })
 export class HomeComponent {
   private auth = inject(AuthService);
-
   $userId = computed(() => this.auth.$authUser()?.uid);
-
-  constructor() {
-    effect(() => {
-      console.log(this.$userId());
-    });
-  }
 }

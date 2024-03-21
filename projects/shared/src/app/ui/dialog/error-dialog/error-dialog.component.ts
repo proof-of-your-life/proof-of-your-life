@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  WritableSignal,
-  computed,
-  signal,
-} from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { BaseDialogComponent } from '@shared/app/ui/dialog/base-dialog/base-dialog.component';
 
 @Component({
@@ -12,10 +6,10 @@ import { BaseDialogComponent } from '@shared/app/ui/dialog/base-dialog/base-dial
   standalone: true,
   imports: [BaseDialogComponent],
   template: ` <shared-base-dialog
-    [$isOpen]="$isOpen"
-    [$title]="$title"
-    [$message]="$message"
-    [$isBackDrop]="$isBackDrop"
+    [$isOpen]="$isOpen()"
+    [$title]="$title()"
+    [$message]="$message()"
+    [$isBackDrop]="$isBackDrop()"
     (baseDialogCloseButtonClickEvent)="clickCloseButton()"
     (baseDialogLeftButtonClickEvent)="clickLeftButton()"
     (baseDialogCenterButtonClickEvent)="clickCenterButton()"
@@ -24,10 +18,11 @@ import { BaseDialogComponent } from '@shared/app/ui/dialog/base-dialog/base-dial
   styles: ``,
 })
 export class ErrorDialogComponent {
-  @Input() $error: WritableSignal<Error | undefined> = signal(undefined);
+  $error = input<Error | undefined>(undefined);
+  $title = input('Error');
+  $isBackDrop = input(true);
 
   $isOpen = computed(() => Boolean(this.$error()));
-  $title = signal('Error');
   $message = computed(() => {
     return `
 Error Name: ${this.$error()?.name ?? 'Unknown Error Name'}
@@ -36,25 +31,25 @@ Error Cause: ${this.$error()?.cause ?? 'Unknown Error Cause'}
 Error Stack: ${this.$error()?.stack ?? 'Unknown Error Stack'}
     `;
   });
-  $isBackDrop = signal(true);
 
-  clearError = () => {
-    this.$error.set(undefined);
-  };
+  errorDialogClickCloseButtonEvent = output();
+  errorDialogClickLeftButtonEvent = output();
+  errorDialogClickCenterButtonEvent = output();
+  errorDialogClickRightButtonEvent = output();
 
-  clickCloseButton = () => {
-    this.clearError();
-  };
+  clickCloseButton(): void {
+    this.errorDialogClickCloseButtonEvent.emit();
+  }
 
-  clickLeftButton = () => {
-    this.clearError();
-  };
+  clickLeftButton(): void {
+    this.errorDialogClickLeftButtonEvent.emit();
+  }
 
-  clickCenterButton = () => {
-    this.clearError();
-  };
+  clickCenterButton(): void {
+    this.errorDialogClickCenterButtonEvent.emit();
+  }
 
-  clickRightButton = () => {
-    this.clearError();
-  };
+  clickRightButton(): void {
+    this.errorDialogClickRightButtonEvent.emit();
+  }
 }

@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  Signal,
-  WritableSignal,
-  signal,
-} from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { FaHomeIconComponent } from '@shared/app/ui/icon/fontawesome/fa-home-icon/fa-home-icon.component';
@@ -37,14 +31,14 @@ import { FaAddressCardIconComponent } from '@shared/app/ui/icon/fontawesome/fa-a
       <div class="divider"></div>
       <li>
         <a [routerLink]="['/']" (click)="toggleDrawer()">
-          <shared-fa-home-icon [$size]="$size" />
+          <shared-fa-home-icon [$size]="$size()" />
           <span>ホーム</span>
         </a>
       </li>
       @if ($userId()) {
         <li>
           <a [routerLink]="['/users', $userId()]" (click)="toggleDrawer()">
-            <shared-fa-user-circle-icon [$size]="$size" />
+            <shared-fa-user-circle-icon [$size]="$size()" />
             <span>プロフィール</span>
           </a>
         </li>
@@ -53,7 +47,7 @@ import { FaAddressCardIconComponent } from '@shared/app/ui/icon/fontawesome/fa-a
             [routerLink]="['/public/profile/', $userId()]"
             (click)="toggleDrawer()"
           >
-            <shared-fa-address-card-icon [$size]="$size" />
+            <shared-fa-address-card-icon [$size]="$size()" />
             <span>公開プロフィール(開発中)</span>
           </a>
         </li>
@@ -62,19 +56,19 @@ import { FaAddressCardIconComponent } from '@shared/app/ui/icon/fontawesome/fa-a
             [routerLink]="['/users', $userId(), 'accounts']"
             (click)="toggleDrawer()"
           >
-            <shared-fa-user-plus-icon [$size]="$size" />
+            <shared-fa-user-plus-icon [$size]="$size()" />
             <span>アカウント連携(開発中)</span>
           </a>
         </li>
         <li>
           <a [routerLink]="['/privacy-policy']" (click)="toggleDrawer()">
-            <shared-fa-user-lock-icon [$size]="$size" />
+            <shared-fa-user-lock-icon [$size]="$size()" />
             <span>プライバシーポリシー</span>
           </a>
         </li>
         <li>
           <a [routerLink]="['/terms-of-service']" (click)="toggleDrawer()">
-            <shared-fa-file-contract-icon [$size]="$size" />
+            <shared-fa-file-contract-icon [$size]="$size()" />
             <span>利用規約</span>
           </a>
         </li>
@@ -85,32 +79,32 @@ import { FaAddressCardIconComponent } from '@shared/app/ui/icon/fontawesome/fa-a
             rel="noopener noreferrer"
             (click)="toggleDrawer()"
           >
-            <shared-fa-mail-bulk-icon [$size]="$size" />
+            <shared-fa-mail-bulk-icon [$size]="$size()" />
             <span>お問合せ</span>
           </a>
         </li>
         <li>
           <a [routerLink]="['/auth/sign-out']" (click)="toggleDrawer()">
-            <shared-fa-right-from-bracket-icon [$size]="$size" />
+            <shared-fa-right-from-bracket-icon [$size]="$size()" />
             <span>ログアウト</span>
           </a>
         </li>
       } @else {
         <li>
           <a [routerLink]="['/auth/sign-in']" (click)="toggleDrawer()">
-            <shared-fa-right-to-bracket-icon [$size]="$size" />
+            <shared-fa-right-to-bracket-icon [$size]="$size()" />
             <span>ログイン</span>
           </a>
         </li>
         <li>
           <a [routerLink]="['/privacy-policy']" (click)="toggleDrawer()">
-            <shared-fa-user-lock-icon [$size]="$size" />
+            <shared-fa-user-lock-icon [$size]="$size()" />
             <span>プライバシーポリシー</span>
           </a>
         </li>
         <li>
           <a [routerLink]="['/terms-of-service']" (click)="toggleDrawer()">
-            <shared-fa-file-contract-icon [$size]="$size" />
+            <shared-fa-file-contract-icon [$size]="$size()" />
             <span>利用規約</span>
           </a>
         </li>
@@ -121,7 +115,7 @@ import { FaAddressCardIconComponent } from '@shared/app/ui/icon/fontawesome/fa-a
             rel="noopener noreferrer"
             (click)="toggleDrawer()"
           >
-            <shared-fa-mail-bulk-icon [$size]="$size" />
+            <shared-fa-mail-bulk-icon [$size]="$size()" />
             <span>お問合せ</span>
           </a>
         </li>
@@ -143,9 +137,8 @@ import { FaAddressCardIconComponent } from '@shared/app/ui/icon/fontawesome/fa-a
   ],
 })
 export class NavMenuComponent {
-  @Input() $userId: WritableSignal<string> | Signal<string> = signal('');
-
-  $size: WritableSignal<SizeProp> | Signal<SizeProp> = signal('1x');
+  $userId = input('');
+  $size = input<SizeProp>('1x');
 
   toggleDrawer() {
     const elem = document.getElementById('app-menu-drawer'); // Note: this is the id of the drawer(outside of this component)

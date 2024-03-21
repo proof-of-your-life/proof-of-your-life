@@ -1,4 +1,4 @@
-import { Component, WritableSignal, inject, signal } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { AuthService } from '@shared/app/features/auth/auth.service';
 import { FaGithubIconComponent } from '@shared/app/ui/icon/fontawesome/fa-github-icon/fa-github-icon.component';
@@ -8,7 +8,7 @@ import { FaGithubIconComponent } from '@shared/app/ui/icon/fontawesome/fa-github
   standalone: true,
   template: `
     <button class="btn normal-case" (click)="clickHandler()" disabled>
-      <shared-fa-github-icon [$size]="$size" />
+      <shared-fa-github-icon [$size]="$size()" />
       GitHubログイン
     </button>
   `,
@@ -18,7 +18,7 @@ import { FaGithubIconComponent } from '@shared/app/ui/icon/fontawesome/fa-github
 export class SignInWithGithubButtonComponent {
   private auth = inject(AuthService);
 
-  $size: WritableSignal<SizeProp> = signal('1x');
+  $size = input<SizeProp>('1x');
 
   async clickHandler() {
     await this.auth.signInWithGithub();

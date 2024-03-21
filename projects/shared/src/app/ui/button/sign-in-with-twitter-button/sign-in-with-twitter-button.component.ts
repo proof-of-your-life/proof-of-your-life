@@ -1,4 +1,4 @@
-import { Component, WritableSignal, inject, signal } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { AuthService } from '@shared/app/features/auth/auth.service';
 import { FaTwitterIconComponent } from '@shared/app/ui/icon/fontawesome/fa-twitter-icon/fa-twitter-icon.component';
@@ -12,7 +12,7 @@ import { FaTwitterIconComponent } from '@shared/app/ui/icon/fontawesome/fa-twitt
       (click)="clickHandler()"
       disabled
     >
-      <shared-fa-twitter-icon [$size]="$size" />
+      <shared-fa-twitter-icon [$size]="$size()" />
       Twitterログイン
     </button>
   `,
@@ -22,7 +22,7 @@ import { FaTwitterIconComponent } from '@shared/app/ui/icon/fontawesome/fa-twitt
 export class SignInWithTwitterButtonComponent {
   private auth = inject(AuthService);
 
-  $size: WritableSignal<SizeProp> = signal('1x');
+  $size = input<SizeProp>('1x');
 
   async clickHandler() {
     await this.auth.signInWithTwitter();

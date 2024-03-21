@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, Signal, inject } from '@angular/core';
 import {
   Firestore,
   collection,
@@ -16,6 +16,7 @@ import { NewUser, UpdatableUser, User } from './user.model';
 import { ulid } from 'ulid';
 import { IUserService } from './user.service';
 import { Observable, mergeMap, of } from 'rxjs';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
@@ -59,6 +60,9 @@ export class UserFirebaseService implements IUserService {
     }
     return docData(this.docRef(id));
   };
+  $get = ($id: Signal<string | null | undefined>) => {
+    return toSignal(toObservable($id).pipe(mergeMap((id) => this.get$(id))));
+  };
 
   me = async () => {
     const authUser = this.authService.$authUser();
@@ -77,11 +81,15 @@ export class UserFirebaseService implements IUserService {
       mergeMap((authUser) => this.get$(authUser?.uid)),
     );
   };
+  $me = () => {
+    return toSignal(this.me$());
+  };
 
   list = async () => {
     return (await getDocs(this.collectionRef)).docs.map((doc) => doc.data());
   };
   list$ = (): Observable<User[]> => collectionData(this.collectionRef);
+  $list = (): Signal<User[] | undefined> => toSignal(this.list$());
 
   create = async (newUser: NewUser) => {
     const id = ulid();

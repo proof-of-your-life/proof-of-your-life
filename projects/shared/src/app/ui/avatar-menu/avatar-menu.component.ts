@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  Signal,
-  WritableSignal,
-  signal,
-} from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { AvatarWithTooltipComponent } from '@shared/app/ui/avatar-with-tooltip/avatar-with-tooltip.component';
@@ -19,8 +13,8 @@ import { FaRightFromBracketIconComponent } from '@shared/app/ui/icon/fontawesome
       <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
       <label [tabIndex]="0" class="btn btn-circle">
         <shared-avatar-with-tooltip
-          [$displayName]="$displayName"
-          [$photoUrl]="$photoUrl"
+          [$displayName]="$displayName()"
+          [$photoUrl]="$photoUrl()"
         />
       </label>
       <ul
@@ -30,14 +24,14 @@ import { FaRightFromBracketIconComponent } from '@shared/app/ui/icon/fontawesome
         @if ($userId()) {
           <li>
             <a [routerLink]="['/auth/sign-out']" (click)="close()">
-              <shared-fa-right-from-bracket-icon [$size]="$iconSize" />
+              <shared-fa-right-from-bracket-icon [$size]="$iconSize()" />
               <span>ログアウト</span>
             </a>
           </li>
         } @else {
           <li>
             <a [routerLink]="['/auth/sign-in']" (click)="close()">
-              <shared-fa-right-to-bracket-icon [$size]="$iconSize" />
+              <shared-fa-right-to-bracket-icon [$size]="$iconSize()" />
               <span>ログイン</span>
             </a>
           </li>
@@ -54,11 +48,10 @@ import { FaRightFromBracketIconComponent } from '@shared/app/ui/icon/fontawesome
   ],
 })
 export class AvatarMenuComponent {
-  @Input() $userId: WritableSignal<string> | Signal<string> = signal('');
-  @Input() $displayName: WritableSignal<string> | Signal<string> = signal('');
-  @Input() $photoUrl: WritableSignal<string> | Signal<string> = signal('');
-
-  $iconSize: WritableSignal<SizeProp> = signal('1x');
+  $userId = input('');
+  $displayName = input('');
+  $photoUrl = input('');
+  $iconSize = input<SizeProp>('1x');
 
   close = (): void => {
     const activeElement = document.activeElement;

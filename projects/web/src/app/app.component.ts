@@ -17,15 +17,21 @@ import { AuthService } from '@shared/app/features/auth/auth.service';
   standalone: true,
   template: `
     <shared-drawer
-      [$title]="$title"
-      [$userId]="$userId"
-      [$displayName]="$displayName"
-      [$photoUrl]="$photoUrl"
+      [$title]="$title()"
+      [$userId]="$userId()"
+      [$displayName]="$displayName()"
+      [$photoUrl]="$photoUrl()"
     >
       <router-outlet></router-outlet>
     </shared-drawer>
-    <shared-error-dialog [$error]="$error"></shared-error-dialog>
-    <shared-loading-dialog [$isLoading]="$isLoading" />
+    <shared-error-dialog
+      [$error]="$error()"
+      (errorDialogClickCloseButtonEvent)="resetError()"
+      (errorDialogClickLeftButtonEvent)="resetError()"
+      (errorDialogClickCenterButtonEvent)="resetError()"
+      (errorDialogClickRightButtonEvent)="resetError()"
+    />
+    <shared-loading-dialog [$isLoading]="$isLoading()" />
   `,
   styles: [],
   imports: [
@@ -45,13 +51,20 @@ export class AppComponent {
   private auth = inject(AuthService);
 
   $authUser = this.auth.$authUser;
-
-  $error = signal(undefined);
+  $error = signal<Error | undefined>(undefined);
   $isLoading = signal(false);
-  $title = signal('Proof of Your Life');
+  $title = signal(
+    `Proof of Your Life${
+      environment.environment === 'prod'
+        ? ''
+        : ' (' + environment.environment + ')'
+    }`,
+  );
   $userId = computed(() => this.$authUser()?.uid ?? '');
   $displayName = computed(() => this.$authUser()?.displayName ?? '');
   $photoUrl = computed(() => this.$authUser()?.photoURL ?? '');
 
-  environment = environment;
+  resetError(): void {
+    this.$error.set(undefined);
+  }
 }
