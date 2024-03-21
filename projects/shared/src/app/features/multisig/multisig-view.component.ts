@@ -1,4 +1,4 @@
-import { Component, Input, WritableSignal, signal } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Multisig } from './multisig.model';
 import { LoadingDialogComponent } from '@shared/app/ui/dialog/loading-dialog/loading-dialog.component';
 
@@ -46,6 +46,5 @@ import { LoadingDialogComponent } from '@shared/app/ui/dialog/loading-dialog/loa
   imports: [LoadingDialogComponent],
 })
 export class MultisigViewComponent {
-  @Input() $multisig: WritableSignal<Multisig | null | undefined> =
-    signal(null);
+  $multisig = input<Multisig | null | undefined>(null);
 }

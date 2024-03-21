@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  Signal,
-  WritableSignal,
-  signal,
-} from '@angular/core';
+import { Component, input } from '@angular/core';
 import { NavBarComponent } from '@shared/app/ui/nav-bar/nav-bar.component';
 import { FooterComponent } from '@shared/app/ui/footer/footer.component';
 import { NavMenuComponent } from '@shared/app/ui/nav-menu/nav-menu.component';
@@ -18,10 +12,10 @@ import { NavMenuComponent } from '@shared/app/ui/nav-menu/nav-menu.component';
       <div class="drawer-content flex-col min-h-screen">
         <div>
           <shared-nav-bar
-            [$title]="$title"
-            [$userId]="$userId"
-            [$displayName]="$displayName"
-            [$photoUrl]="$photoUrl"
+            [$title]="$title()"
+            [$userId]="$userId()"
+            [$displayName]="$displayName()"
+            [$photoUrl]="$photoUrl()"
           />
         </div>
 
@@ -38,7 +32,7 @@ import { NavMenuComponent } from '@shared/app/ui/nav-menu/nav-menu.component';
 
       <div class="drawer-side min-h-screen">
         <label for="app-menu-drawer" class="drawer-overlay"></label>
-        <shared-nav-menu [$userId]="$userId" />
+        <shared-nav-menu [$userId]="$userId()" />
       </div>
     </div>
   `,
@@ -46,8 +40,8 @@ import { NavMenuComponent } from '@shared/app/ui/nav-menu/nav-menu.component';
   imports: [NavBarComponent, FooterComponent, NavMenuComponent],
 })
 export class DrawerComponent {
-  @Input() $title: WritableSignal<string> | Signal<string> = signal('title');
-  @Input() $userId: WritableSignal<string> | Signal<string> = signal('');
-  @Input() $displayName: WritableSignal<string> | Signal<string> = signal('');
-  @Input() $photoUrl: WritableSignal<string> | Signal<string> = signal('');
+  $title = input('title');
+  $userId = input('');
+  $displayName = input('');
+  $photoUrl = input('');
 }

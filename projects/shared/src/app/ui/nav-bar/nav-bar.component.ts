@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  Signal,
-  WritableSignal,
-  signal,
-} from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FaBarsIconComponent } from '@shared/app/ui/icon/fontawesome/fa-bars-icon/fa-bars-icon.component';
 import { AvatarMenuComponent } from '@shared/app/ui/avatar-menu/avatar-menu.component';
@@ -22,7 +16,7 @@ import { SizeProp } from '@fortawesome/fontawesome-svg-core';
             for="app-menu-drawer"
             class="btn btn-ghost drawer-button lg:hidden"
           >
-            <shared-fa-bars-icon [$size]="$size" />
+            <shared-fa-bars-icon [$size]="$size()" />
           </label>
         </div>
       </div>
@@ -33,9 +27,9 @@ import { SizeProp } from '@fortawesome/fontawesome-svg-core';
       </div>
       <div class="navbar-end">
         <shared-avatar-menu
-          [$userId]="$userId"
-          [$photoUrl]="$photoUrl"
-          [$displayName]="$displayName"
+          [$userId]="$userId()"
+          [$photoUrl]="$photoUrl()"
+          [$displayName]="$displayName()"
         />
       </div>
     </div>
@@ -43,13 +37,11 @@ import { SizeProp } from '@fortawesome/fontawesome-svg-core';
   styles: ``,
 })
 export class NavBarComponent {
-  @Input() $title: WritableSignal<string> | Signal<string> = signal('title');
-  @Input() $userId: WritableSignal<string> | Signal<string> = signal('userId');
-  @Input() $photoUrl: WritableSignal<string> | Signal<string> = signal(
+  $title = input('title');
+  $userId = input('userId');
+  $photoUrl = input(
     'https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg',
   );
-  @Input() $displayName: WritableSignal<string> | Signal<string> =
-    signal('displayName');
-
-  $size: WritableSignal<SizeProp> | Signal<SizeProp> = signal('1x');
+  $displayName = input('displayName');
+  $size = input<SizeProp>('1x');
 }

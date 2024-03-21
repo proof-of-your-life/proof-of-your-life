@@ -1,4 +1,4 @@
-import { Component, Input, computed } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'web-user-accounts',
@@ -8,9 +8,6 @@ import { Component, Input, computed } from '@angular/core';
   styles: ``,
 })
 export class UserAccountsComponent {
-  @Input() userId: string | null | undefined = null;
-  @Input() accountId: string | null | undefined = null;
-
-  $userId = computed(() => this.userId);
-  $accountId = computed(() => this.accountId);
+  $userId = input<string | null | undefined>(undefined);
+  $accountId = input<string | null | undefined>(undefined);
 }

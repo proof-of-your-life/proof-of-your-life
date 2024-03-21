@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import {
   Member,
   MemberComponent,
@@ -13,8 +13,8 @@ import {
       <div class="text-center">
         <h2 class="text-5xl font-bold mb-3">メンバー</h2>
         <div class="flex flex-row flex-wrap gap-3 justify-center">
-          @for (member of members; track $index) {
-            <shared-member [member]="member" />
+          @for (member of $members(); track $index) {
+            <shared-member [$member]="member" />
           }
         </div>
       </div>
@@ -23,7 +23,7 @@ import {
   styles: ``,
 })
 export class MembersHeroComponent {
-  members: Member[] = [
+  $members = input<Member[]>([
     {
       name: '松岡 靖典 / Yasunori Matsuoka',
       image: '/assets/img/member-1.jpg',
@@ -55,5 +55,5 @@ export class MembersHeroComponent {
       facebook: 'https://www.facebook.com/imananninja',
       github: 'https://github.com/hossiiii',
     },
-  ];
+  ]);
 }

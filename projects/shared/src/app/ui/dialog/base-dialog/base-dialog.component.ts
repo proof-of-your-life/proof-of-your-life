@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  Signal,
-  WritableSignal,
-  signal,
-} from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { isWritableSignal } from '@shared/app/utils/angular/isWritableSignal';
 
 @Component({
@@ -59,44 +51,31 @@ import { isWritableSignal } from '@shared/app/utils/angular/isWritableSignal';
   styles: ``,
 })
 export class BaseDialogComponent<T> {
-  @Input() $modalId: WritableSignal<string> | Signal<string> =
-    signal('modalId');
-  @Input() $isBackDrop: WritableSignal<boolean> | Signal<boolean> =
-    signal(false);
-  @Input() $isOpen: WritableSignal<boolean> | Signal<boolean> = signal(false);
-  @Input() $isLoading: WritableSignal<boolean> | Signal<boolean> =
-    signal(false);
-  @Input() $title: WritableSignal<string> | Signal<string> =
-    signal('Modal Title');
-  @Input() $message: WritableSignal<string> | Signal<string> =
-    signal('Modal Message');
+  $modalId = input('modalId');
+  $isBackDrop = input(false);
+  $isOpen = input(false);
+  $isLoading = input(false);
+  $title = input('Modal Title');
+  $message = input('Modal Message');
 
-  @Input() $showCloseButton: WritableSignal<boolean> | Signal<boolean> =
-    signal(true);
-  @Input() $closeButtonLabel: WritableSignal<string> | Signal<string> =
-    signal('X');
+  $showCloseButton = input(true);
+  $closeButtonLabel = input('X');
 
-  @Input() $showLeftButton: WritableSignal<boolean> | Signal<boolean> =
-    signal(true);
-  @Input() $leftButtonLabel: WritableSignal<string> | Signal<string> =
-    signal('Left Button');
+  $showLeftButton = input(true);
+  $leftButtonLabel = input('Left Button');
 
-  @Input() $showCenterButton: WritableSignal<boolean> | Signal<boolean> =
-    signal(true);
-  @Input() $centerButtonLabel: WritableSignal<string> | Signal<string> =
-    signal('Center Button');
+  $showCenterButton = input(true);
+  $centerButtonLabel = input('Center Button');
 
-  @Input() $showRightButton: WritableSignal<boolean> | Signal<boolean> =
-    signal(true);
-  @Input() $rightButtonLabel: WritableSignal<string> | Signal<string> =
-    signal('Right Button');
+  $showRightButton = input(true);
+  $rightButtonLabel = input('Right Button');
 
-  @Input() $data: WritableSignal<T> = signal({} as T);
+  $data = input<T>({} as T);
 
-  @Output() baseDialogCloseButtonClickEvent = new EventEmitter<T>();
-  @Output() baseDialogLeftButtonClickEvent = new EventEmitter<T>();
-  @Output() baseDialogCenterButtonClickEvent = new EventEmitter<T>();
-  @Output() baseDialogRightButtonClickEvent = new EventEmitter<T>();
+  baseDialogCloseButtonClickEvent = output<T>();
+  baseDialogLeftButtonClickEvent = output<T>();
+  baseDialogCenterButtonClickEvent = output<T>();
+  baseDialogRightButtonClickEvent = output<T>();
 
   clickCloseButton(): void {
     this.baseDialogCloseButtonClickEvent.emit(this.$data());

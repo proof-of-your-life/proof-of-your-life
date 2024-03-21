@@ -1,4 +1,4 @@
-import { Component, WritableSignal, signal } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { FaMailBulkIconComponent } from '@shared/app/ui/icon/fontawesome/fa-mail-bulk-icon/fa-mail-bulk-icon.component';
 import { FaTwitterIconComponent } from '@shared/app/ui/icon/fontawesome/fa-twitter-icon/fa-twitter-icon.component';
@@ -59,7 +59,7 @@ import { FaHomeIconComponent } from '@shared/app/ui/icon/fontawesome/fa-home-ico
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <shared-fa-mail-bulk-icon [$size]="$size" />
+                    <shared-fa-mail-bulk-icon [$size]="$size()" />
                     <span class="ml-3">contact&#64;proof-of-your-life.io</span>
                   </a>
                 </td>
@@ -74,21 +74,21 @@ import { FaHomeIconComponent } from '@shared/app/ui/icon/fontawesome/fa-home-ico
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <shared-fa-twitter-icon [$size]="$size" />
+                    <shared-fa-twitter-icon [$size]="$size()" />
                   </a>
                   <a
                     href="https://github.com/proof-of-your-life/proof-of-your-life"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <shared-fa-github-icon [$size]="$size" />
+                    <shared-fa-github-icon [$size]="$size()" />
                   </a>
                   <a
                     href="https://web.dev.proof-of-your-life.io/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <shared-fa-home-icon [$size]="$size" />
+                    <shared-fa-home-icon [$size]="$size()" />
                   </a>
                 </div>
               </td>
@@ -101,5 +101,5 @@ import { FaHomeIconComponent } from '@shared/app/ui/icon/fontawesome/fa-home-ico
   styles: ``,
 })
 export class CompanyHeroComponent {
-  $size: WritableSignal<SizeProp> = signal('1x');
+  $size = input<SizeProp>('1x');
 }

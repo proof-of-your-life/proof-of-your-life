@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'shared-base-button',
@@ -10,6 +10,6 @@ import { Component, signal } from '@angular/core';
   styles: ``,
 })
 export class BaseButtonComponent {
-  $text = signal('Button Text');
-  $isUpperCase = signal(false);
+  $text = input('Button Text');
+  $isUpperCase = input(false);
 }
