@@ -16,7 +16,7 @@ setFunctionsV2DefaultGlobalOption(
   {
     region: 'asia-northeast1',
     timeoutSeconds: 60,
-    memory: '128MiB',
+    memory: '256MiB',
   },
   functionsV2,
 );
