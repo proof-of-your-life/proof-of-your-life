@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FaGoogeIconComponent } from './fa-googe-icon.component';
+import { FaGoogleIconComponent } from './fa-google-icon.component';
 
-describe('FaGoogeIconComponent', () => {
-  let component: FaGoogeIconComponent;
-  let fixture: ComponentFixture<FaGoogeIconComponent>;
+describe('FaGoogleIconComponent', () => {
+  let component: FaGoogleIconComponent;
+  let fixture: ComponentFixture<FaGoogleIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FaGoogeIconComponent],
+      imports: [FaGoogleIconComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FaGoogeIconComponent);
+    fixture = TestBed.createComponent(FaGoogleIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
