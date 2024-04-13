@@ -1,7 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { AuthService } from '@shared/app/features/auth/auth.service';
-import { FaGoogeIconComponent } from '@shared/app/ui/icon/fontawesome/fa-googe-icon/fa-googe-icon.component';
+import { FaGoogleIconComponent } from '@shared/app/ui/icon/fontawesome/fa-google-icon/fa-google-icon.component';
 
 @Component({
   selector: 'shared-sign-in-with-google-button',
@@ -13,7 +13,7 @@ import { FaGoogeIconComponent } from '@shared/app/ui/icon/fontawesome/fa-googe-i
     </button>
   `,
   styles: ``,
-  imports: [FaGoogeIconComponent],
+  imports: [FaGoogleIconComponent],
 })
 export class SignInWithGoogleButtonComponent {
   private auth = inject(AuthService);

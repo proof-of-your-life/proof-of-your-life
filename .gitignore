@@ -53,6 +53,7 @@ environment.*
 
 # Firebase Emulator's Local Data
 /data
+/firebase-export-*
 
 # Firebase deploy cache directory
 /.firebase
