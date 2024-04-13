@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { Component, input } from '@angular/core';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { FaMailBulkIconComponent } from '@shared/app/ui/icon/fontawesome/fa-mail-bulk-icon/fa-mail-bulk-icon.component';
@@ -25,7 +26,6 @@ import { FaFileContractIconComponent } from '@shared/app/ui/icon/fontawesome/fa-
             <tbody>
               <tr>
                 <th>会社名</th>
-                <!-- eslint-disable-next-line no-irregular-whitespace -->
                 <td>株式会社Ｐｒｏｏｆ　ｏｆ　Ｙｏｕｒ　Ｌｉｆｅ</td>
               </tr>
               <tr>
