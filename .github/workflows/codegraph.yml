@@ -1,6 +1,9 @@
 name: Call Codegraph document generation API
 
-on: push
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
   send_api_request:
