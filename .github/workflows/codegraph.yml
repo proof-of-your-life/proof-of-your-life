@@ -13,14 +13,16 @@ jobs:
         shell: bash
         env:
           CODEGRAPH_API_TOKEN: ${{ secrets.CODEGRAPH_API_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           branch_name=${GITHUB_REF#refs/heads/}
-          url="https://api.codegraph.co.jp/repos/${GITHUB_REPOSITORY}/branches/${branch_name}/update"
+          url="https://api.cinca-codegraph.com/repos/${GITHUB_REPOSITORY}/branches/${branch_name}/update"
           echo "${url}"
 
           http_status_code=$(curl -s -o /dev/null -w "%{http_code}" \
-            -X POST \
-            -H "Authorization: Bearer ${CODEGRAPH_API_TOKEN}" \
+            -X PUT \
+            -H "X-ACCESS-TOKEN: ${CODEGRAPH_API_TOKEN}" \
+            -H "X-GITHUB-ACCESS-TOKEN: ${GITHUB_TOKEN}" \
             -H "Content-Type: application/json" \
             -d '{}' \
             "${url}")
@@ -31,3 +33,6 @@ jobs:
             echo "Error: status code $http_status_code is not in the 200-300 range. Failing."
             exit 1
           fi
+
+          # Codegraph の⾃動更新タスクと同期するため、⼀定時間待機してください
+          sleep 60
