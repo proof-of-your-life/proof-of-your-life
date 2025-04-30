@@ -22,7 +22,7 @@ jobs:
           http_status_code=$(curl -s -o /dev/null -w "%{http_code}" \
             -X PUT \
             -H "X-ACCESS-TOKEN: ${CODEGRAPH_API_TOKEN}" \
-            -H "X-GITHUBACCESS-TOKEN: ${GITHUB_TOKEN}" \
+            -H "X-GITHUB-ACCESS-TOKEN: ${GITHUB_TOKEN}" \
             -H "Content-Type: application/json" \
             -d '{}' \
             "${url}")
