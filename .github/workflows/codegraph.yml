@@ -12,12 +12,13 @@ jobs:
       - name: Call Codegraph document generation API
         shell: bash
         env:
-          CODEGRAPH_API_TOKEN $ secrets.CODEGRAPH_API_TOKEN 
-          GITHUB_TOKEN $ secrets.GITHUB_TOKEN 
+          CODEGRAPH_API_TOKEN: ${{ secrets.CODEGRAPH_API_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch_name=$GITHUB_REF#refs/heads/}
-          url="https://api.cinca-codegraph.com/repos/$GITHUB_REPOSITORY/branches/${branch_name}/update"
+          branch_name=${GITHUB_REF#refs/heads/}
+          url="https://api.cinca-codegraph.com/repos/${GITHUB_REPOSITORY}/branches/${branch_name}/update"
           echo "${url}"
+
           http_status_code=$(curl -s -o /dev/null -w "%{http_code}" \
             -X PUT \
             -H "X-ACCESS-TOKEN: ${CODEGRAPH_API_TOKEN}" \
@@ -35,4 +36,3 @@ jobs:
 
           # Codegraph の⾃動更新タスクと同期するため、⼀定時間待機してください
           sleep 60
-          
